@@ -1,0 +1,20 @@
+{
+  "name": "sq-three-car-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build-en": "vite build --base=/sq-three-car",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "three": "^0.180.0",
+    "vite-plugin-glsl": "^1.5.4"
+  }
+}

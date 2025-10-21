@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sq-three-car-demo</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+  <canvas id="three-canvas"></canvas>
+  <div class="color-card">
+    <div class="car-body-list-color">
+      <div class="car-body-list-color-item black" data-color="black"></div>
+      <div class="car-body-list-color-item blue" data-color="blue"></div>
+      <div class="car-body-list-color-item green" data-color="green"></div>
+      <div class="car-body-list-color-item red" data-color="red"></div>
+      <div class="car-body-list-color-item purple" data-color="purple"></div>
+      <div class="car-body-list-color-item skyblue" data-color="skyblue"></div>
+      <div class="car-body-list-color-item flow" data-color="flow"></div>
+    </div>
+  </div>
+  <div class="right-btn">
+    <div class="right-item" data-name="enabled">车灯</div>
+    <div class="right-item" data-name="showWind">风洞</div>
+    <div class="right-item" data-name="showPipeline">隧道</div>
+    <div class="right-item" data-name="reloadPoint">粒子</div>
+  </div>
+  <div class="loading">
+    <div class="loading-3">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

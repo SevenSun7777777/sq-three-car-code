@@ -1,0 +1,280 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#three-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* 毛玻璃卡片 */
+.color-card {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  /* 减小最大宽度 */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 18px 20px;
+  /* 调整内边距 */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 100;
+}
+
+.car-body-list-color {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  /* 减小间隙 */
+}
+
+.car-body-list-color-item {
+  width: 48px;
+  /* 稍微调整大小 */
+  height: 48px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.car-body-list-color-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.car-body-list-color-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
+  transition: left 0.5s ease;
+}
+
+.car-body-list-color-item:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.car-body-list-color-item:hover::before {
+  opacity: 1;
+}
+
+.car-body-list-color-item:hover::after {
+  left: 100%;
+}
+
+.car-body-list-color-item.active {
+  transform: scale(1.15);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.8),
+    0 6px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.car-body-list-color-item.active::before {
+  opacity: 1;
+}
+
+/* Color definitions */
+.black {
+  background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+}
+
+.blue {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.green {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.red {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.purple {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.skyblue {
+  background: linear-gradient(135deg, #87CEEB, #5DADE2);
+}
+
+.flow {
+  /* background: linear-gradient(135deg, #00dbde, #fc00ff); */
+  background: url('/img/flow.png') no-repeat center center;
+  background-size: cover;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .color-card {
+    width: 95%;
+    max-width: 500px;
+    padding: 15px;
+  }
+
+  .car-body-list-color {
+    gap: 6px;
+  }
+
+  .car-body-list-color-item {
+    width: 44px;
+    height: 44px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .color-card {
+    max-width: 400px;
+    padding: 12px 15px;
+  }
+
+  .car-body-list-color {
+    gap: 5px;
+  }
+
+  .car-body-list-color-item {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shape {
+    filter: blur(40px);
+  }
+}
+
+@media (max-width: 380px) {
+  .color-card {
+    max-width: 350px;
+  }
+
+  .car-body-list-color {
+    gap: 4px;
+  }
+
+  .car-body-list-color-item {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.right-btn {
+  position: absolute;
+  width: 100%;
+  color: #ddd;
+  bottom: 124px;
+  display: flex;
+  gap: 36px;
+  justify-content: center;
+}
+
+.right-item {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+.right-item:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 101;
+  background: rgba(0, 0, 0, 1);
+}
+
+/* 弹跳点加载动画 */
+.loading-3 {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loading-3 div {
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-3 div:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-3 div:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
